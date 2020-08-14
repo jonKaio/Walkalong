@@ -1,11 +1,15 @@
 ﻿There are a number of improvements that can be made to the Dumb Guess the number example.
 
 1. It seems to be super predictable,and in fact unimaginative in the numbers it guesses. Should probably fix this.
+	I might be able to find some clues around the predicitbility of the system by checking Microsofts page here
+	https://docs.microsoft.com/en-us/dotnet/api/system.random?view=netcore-3.1
 
 2. Even though I tell it I want more than 5 tries or I want the range to be so much greater than just 20 (and it does comply) it still only tells me I have just 5 tries etc. Gotta fix this.
 
-3. Every now and then it'll crash starting with the error "Unhandled exception. blah blah" need to fix that at some point.
+3. Every now and then it'll crash starting with the error "Unhandled exception. blah blah" need to fix that at some point. Seems to happen before it even does anything.
 
 4. It's a one shot deal, I need to get back to this and get it so I can challenge the proram to 3 matches or something, maybe then keep track of wins & losses and get a score at the end of it.
 
 5. There's got to be a better way of making notes about what I want to do and change in my code, reluctant to add comments everywhere in my code coz I might miss something, if only there was some kind of task list or something.
+
+6. Even when it says I guessed it it says I've lost, whats with this.
