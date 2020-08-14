@@ -8,6 +8,12 @@ namespace GuessTheNumber
 {
     class Program
     {
+        /// <summary>
+        /// Main is your programs entrypoint, for most purposes you should
+        /// regard it as being the first piece of code in your program that will be executed.
+        /// (this is almost 99% true, and is good enough for now.)
+        /// </summary>
+        /// <param name="args"></param>
         static void Main(string[] args)
         {
             Random nGenerator = new Random(123);
