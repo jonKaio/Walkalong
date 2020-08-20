@@ -67,9 +67,16 @@ namespace RefVal
         {
             _myAcc.name = "boris";
         }
+
         /// <summary>
-        /// Dang this is a hard one to explain
-        /// WIP
+        /// Test
+        /// This accepts an Account by REFERENCE, which means we'll be able to
+        /// completely change what object is referred to by the variable we provided
+        /// as an argument when we called this method.
+        ///
+        /// In this case, we're going to completely overwrite the variable we
+        /// passed in with a completely new instance of the Account type.
+        /// 
         /// </summary>
         /// <param name="_myAcc2"></param>
         static void Test(ref Account _myAcc2)
