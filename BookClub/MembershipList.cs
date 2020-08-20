@@ -11,7 +11,9 @@ namespace BookClub
 /// </summary>
     class MembershipList
     {
-        
+        /// <summary>
+        /// The exclusive clubs membership list.
+        /// </summary>
         public ClubMember[] memberList = new ClubMember[10];
 
         /// <summary>
@@ -28,6 +30,10 @@ namespace BookClub
             }
         }
 
+
+        /// <summary>
+        /// This outputs the average amount paid by all members
+        /// </summary>
         public void avgPaid()
         {
             float totalPaid
@@ -43,7 +49,6 @@ namespace BookClub
                 }
             }
             Console.WriteLine($"The average paid {totalPaid / membershipCount}");
-
         }
 
 
