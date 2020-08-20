@@ -14,6 +14,27 @@ namespace BookClub
         public float subsPaid;
 
         /// <summary>
+        /// Default constructor needed when we use custom constructors
+        /// </summary>
+        public ClubMember() { }
+
+        /// <summary>
+        /// Custom constructor
+        /// </summary>
+        /// <param name="_fName">First name</param>
+        /// <param name="_lName">Last Name</param>
+        /// <param name="_paid">The starting balance</param>
+        public ClubMember(string _fName, string _lName,float _paid)
+        {
+            //this isn't necessarily a requirement here, though would add clarity.
+            firstName = _fName;
+            lastName = _lName;
+            subsPaid = _paid;
+        }
+
+
+
+        /// <summary>
         /// Use this to add to the members current balance.
         /// </summary>
         /// <param name="amt"> The amount to add</param>
