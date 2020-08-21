@@ -14,11 +14,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookClub", "BookClub\BookClub.csproj", "{83A262D0-6F7B-414E-B785-93616D6438BB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RefVal", "RefVal\RefVal.csproj", "{D00D7364-F773-4A41-965A-0F615923B4A9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RefVal", "RefVal\RefVal.csproj", "{D00D7364-F773-4A41-965A-0F615923B4A9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CheckArgs", "CheckArgs\CheckArgs.csproj", "{491856D4-68E1-4106-BBD6-EDCFD8959AF2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CheckArgs", "CheckArgs\CheckArgs.csproj", "{491856D4-68E1-4106-BBD6-EDCFD8959AF2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Constants", "Constants\Constants.csproj", "{31A511E7-491B-4549-BD8B-03A1DCD377BC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Constants", "Constants\Constants.csproj", "{31A511E7-491B-4549-BD8B-03A1DCD377BC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Test", "Test\Test.csproj", "{487D0844-D494-477A-99B1-2A5F11964DE0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Inherit", "Inherit\Inherit.csproj", "{B1F32727-7C19-4EB9-B6B7-C0EB358DC3D4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -50,6 +54,14 @@ Global
 		{31A511E7-491B-4549-BD8B-03A1DCD377BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{31A511E7-491B-4549-BD8B-03A1DCD377BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{31A511E7-491B-4549-BD8B-03A1DCD377BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{487D0844-D494-477A-99B1-2A5F11964DE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{487D0844-D494-477A-99B1-2A5F11964DE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{487D0844-D494-477A-99B1-2A5F11964DE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{487D0844-D494-477A-99B1-2A5F11964DE0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1F32727-7C19-4EB9-B6B7-C0EB358DC3D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1F32727-7C19-4EB9-B6B7-C0EB358DC3D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1F32727-7C19-4EB9-B6B7-C0EB358DC3D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1F32727-7C19-4EB9-B6B7-C0EB358DC3D4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
