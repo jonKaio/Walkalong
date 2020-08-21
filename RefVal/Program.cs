@@ -5,7 +5,6 @@ namespace RefVal
 
     // Uncomment the struct version of account to see
     // behaviour of a struct based variable (An example of VALUE types)
-
     struct Account
     {
         public string name;
@@ -31,7 +30,6 @@ namespace RefVal
             Console.WriteLine("-----Starting Values-------");
             Console.WriteLine($"robsAccount name is {robsAccount.name}");
             Console.WriteLine($"fakeRobsAccount name is {fakeRobsAccount.name}");
-
 
             //Change fakeRobsAccount.name and see what happens
             //Behaviour is different depending on it being a STRUCT or a CLASS
@@ -84,6 +82,5 @@ namespace RefVal
             _myAcc2 = new Account();
             _myAcc2.name = "Hector";
         }
-
     }
 }
