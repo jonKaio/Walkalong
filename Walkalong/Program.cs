@@ -6,10 +6,10 @@ namespace Walkalong
     {
         static void Main(string[] args)
         {
-            MyEg myEg = new MyEg();
-            myEg.Name = "Freddie";
+            //MyEg myEg = new MyEg();
+            //myEg.Name = "Freddie";
 
-            Console.WriteLine("Hello World!"+myEg.Name);
+            //Console.WriteLine("Hello World!"+myEg.Name);
         }
     }
 

@@ -1,41 +1,43 @@
 ﻿using System;
+using System.IO.Pipes;
 
 namespace Inherit
 {
-    class Example
-    {
-        protected int protInteger = 5;
-        public int publicInteger = 2;
-        private int privateInteger = 1;
+    //class Example
+    //{
+    //  //  protected int protInteger = 5;
+    //    public int publicInteger = 2;
+    //  //  private int privateInteger = 1;
 
-        void Test()
-        {
-            protInteger = 6;
-            publicInteger = 7;
-            privateInteger = 8;
-        }
+    //  public virtual void Test()
+    //    {
+    //        Console.WriteLine(publicInteger);
+    //       // protInteger = 6;
+    //        //publicInteger = 7;
+    //     //   privateInteger = 8;
+    //    }
 
-    }
+    //}
 
-    class ExampleChild : Example
-    {
+    //class ExampleChild : Example
+    //{
+    //    public int publicInteger = 99;
+
      
+    //    //public int ProtInteger
+    //    //{
+    //    //    get => protInteger;
+    //    //    set => protInteger = value;
+    //    //}
 
-        //public int ProtInteger
-        //{
-        //    get => protInteger;
-        //    set => protInteger = value;
-        //}
-
-        public void Test2()
-        {
-            publicInteger = 1;
-            protInteger = 2;
-            //privateInteger = 3;
-
-
-        }
-    }
+    //    public void Test2()
+    //    {
+    //        Console.WriteLine(publicInteger);
+    //        //publicInteger = 1;
+    //       // protInteger = 2;
+    //       //privateInteger = 3;
+    //    }
+    //}
 
 
     class Program
@@ -43,18 +45,44 @@ namespace Inherit
         static void Main(string[] args)
         {
             //Example eg = new Example();
-            //eg.publicInteger = 10;
+            //eg.Test();
+            //Console.WriteLine("---------------");
             //ExampleChild egChild = new ExampleChild();
-            //egChild.publicInteger = 10;        
+            //egChild.Test();
+            //egChild.Test2();
+
+
+
+            // return;
+
             //Object tmpObject = egChild;
 
+
+
+            Animal fredTheAnimal = new Animal();
+            fredTheAnimal.numberOfLegs = 5;
+            fredTheAnimal.Speak();
+
+
+
             Dog myDog = new Dog();
+            myDog.numberOfLegs = 3;
+            myDog.Speak();
+            Console.WriteLine("-------");
+
             Cat myCat = new Cat();
+            myCat.Speak();
+            
             Mouse broonsMouse = new Mouse();
 
-            //myDog.Speak();
-            //myCat.Speak();
-            //broonsMouse.Speak();
+            myDog.Speak();
+            myCat.Speak();
+            broonsMouse.Speak();
+
+            Animal tmpAnimal = myDog;
+            tmpAnimal.Speak();
+
+            return;
 
             Animal[] zoo = { myDog, myCat, broonsMouse };
 

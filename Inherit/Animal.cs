@@ -10,7 +10,12 @@ namespace Inherit
 
         public virtual void Speak()
         {
-            Console.WriteLine("Mumble");
+            Console.WriteLine($"This Animal Says Mumble,Mumble I have {numberOfLegs} legs attached to my body.");
+        }
+
+        public int AddTwoInts(int _lhs, int _rhs)
+        {
+            return _lhs + _rhs;
         }
     }
 }
