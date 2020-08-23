@@ -6,7 +6,7 @@ namespace RPGWeaponsTest
 {
     class Melee : Weapon
     {
-
+        public string eg = "kjgaksjhgjkhasdgkuygsdfuigusdg";
         public Melee()
         {
             this.name = "Rusty Gimble the one handed axe";

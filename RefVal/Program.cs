@@ -10,23 +10,27 @@ namespace RefVal
         public string name;
     }
 
-    // Uncomment the class version of account to see
-    // behaviour of a class based variable (An example of REFERENCE types)
-    //class Account
-    //{
-    //    public string name;
-    //}
-    class StructsAndClassesDemo
+// Uncomment the class version of account to see
+// behaviour of a class based variable (An example of REFERENCE types)
+//class Account
+//{
+//    public string name;
+//}
+
+
+class StructsAndClassesDemo
     {
         public static void Main()
         {
             //Account could either be a STRUCT or a CLASS depending on the above.
-
+                 
             Account robsAccount = new Account();
             Account fakeRobsAccount;
 
             robsAccount.name = "Rob";
             fakeRobsAccount = robsAccount;
+            
+
             Console.WriteLine("-----Starting Values-------");
             Console.WriteLine($"robsAccount name is {robsAccount.name}");
             Console.WriteLine($"fakeRobsAccount name is {fakeRobsAccount.name}");
