@@ -95,19 +95,15 @@ namespace RPGWeaponsTest
                     default:
                         break;
                 }
-
-
-
-
-
-
-
             }
-
-
             Prompt($"Thank you for playing.");
         }
 
+        //TODO: Make this load from a file, or create a version that does.
+        /// <summary>
+        /// A very basic hard coded weapon load out
+        /// </summary>
+        /// <returns>an array of weapons</returns>
         private static Weapon[] SetupWeapons()
         {
             Weapon[] tmpArr = new Weapon[5];
@@ -123,15 +119,24 @@ namespace RPGWeaponsTest
                 _age: 20,
                 _numberOfHands: 2
                 );
-
-
             return tmpArr;
         }
-
+        #region UtilityRegion
+        //  Much bigger and I'd consider putting these into a utility class.
+        /// <summary>
+        /// Display a simple text prompt
+        /// </summary>
+        /// <param name="_str">Text to display</param>
         public static void Prompt(string _str)
         {
             Console.WriteLine(_str);
         }
+        /// <summary>
+        /// Ask a basic question
+        /// Get a basic answer.
+        /// </summary>
+        /// <param name="_str">Text to display</param>
+        /// <returns>string to return</returns>
         public static string Ask(string _str)
         {
             Prompt(_str);
@@ -154,6 +159,11 @@ namespace RPGWeaponsTest
             Prompt(_str);
             while (checksToPerform > checkCounter)
             {
+                //I will caution that Thread & multitasking code in general
+                //can get pretty thorny at times and is not to be tackled lightly.
+                //However for a very basic approach where we're just concerning with
+                //this type of requirement in basically a single linear application
+                //like this, then this is a reasonable solution.
                 Thread.Sleep(interval);//this allows other things to happen like time continue and the system to take care of life.
                 //Then this loop continues to check that things are happening.
                 if (Console.KeyAvailable)
@@ -171,4 +181,5 @@ namespace RPGWeaponsTest
             return "No Comment.";
         }
     }
+    #endregion
 }
