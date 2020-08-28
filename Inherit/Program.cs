@@ -82,7 +82,6 @@ namespace Inherit
             Animal tmpAnimal = myDog;
             tmpAnimal.Speak();
 
-            return;
 
             Animal[] zoo = { myDog, myCat, broonsMouse };
 

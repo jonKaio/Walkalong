@@ -1,0 +1,26 @@
+﻿weapontype,name,type,damagemod,numberofhands,defaultdamage,age
+m,Excalibur the confused sword,Two Handed Sword,5,2,,
+m,Short sword,One Handed Sword,2,1,,
+m,Rusty Gimble the one handed axe,Axe,-2,1,2,
+r,Brittany,Single handed spear hits one more time.,,,,
+r,Super Bow,Enchanted Bow,0,2,,20
+r,Bullseye,Bow,0,2,1,6
+r,Firestarter,Bow,0,2,2,7
+r,Swiftwind,Bow,0,2,5,1
+r,Redwood Hunting Bow,Bow,0,2,5,5
+r,Redwood Self Bow,Bow,0,2,1,9
+r,Honed Iron Piercer,Bow,0,2,6,4
+r,Prideful Redwood Shooter,Bow,0,2,4,3
+r,Huntress Poke of the Light,Bow,0,2,3,5
+r,Soulstring Etcher of the Enigma,Bow,0,2,2,8
+r,Huntress Recurve of Souls,Bow,0,2,1,4
+m,Godslayer,Axe,0,1,3,30
+m,Shadowfury,Axe,0,2,2,31
+m,Last Laugh,Axe,0,2,1,32
+m,Defiled Cleaver,Axe,0,1,4,34
+m,Thunder Ravager,Axe,0,2,5,3656
+m,Incarnated Iron Cleaver,Axe,0,1,2,1
+m,Hungering Ironbark Ravager,Axe,0,1,1,2
+m,Trickster Wit of Thunder,Axe,0,1,3,3
+m,The End Guardian of Fallen Souls,Axe,0,2,4,4
+m,Chasm Greataxe of the Plague,Axe,0,1,2,5
