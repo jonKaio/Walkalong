@@ -107,6 +107,9 @@ namespace RPGWeaponsTest
             Weapon[] tmpArr;
 
             string[] lines = File.ReadAllLines(filename);
+
+         
+
             tmpArr = new Weapon[lines.Length -1];
             for(int i = 1; i < lines.Length; i++)
             {
@@ -151,7 +154,7 @@ namespace RPGWeaponsTest
 
 
             }
-
+           
             return tmpArr;
         }
 
