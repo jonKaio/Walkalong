@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using System.Text;
 
 namespace RPGWeaponsTest
@@ -20,6 +21,10 @@ namespace RPGWeaponsTest
             npc.hitpoints-=damage;
             Console.WriteLine($"You bludgeon the '{npc.name}' for {damage} point(s) of damage.");
             npc.HealthCheck();
+        }
+        public override string ToString()
+        {
+            return $"---------------\nName:{name}\nType:{type}\nDamage:{damage}\n";
         }
     }
 }

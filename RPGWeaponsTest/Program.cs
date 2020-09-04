@@ -44,11 +44,11 @@ namespace RPGWeaponsTest
                     case "bag":
                     case "show inv":
                     case "inv":
+
                     case "inventory":
                         foreach (Weapon weap in myArsenal)
                         {
                             Prompt(weap.name);
-                            //do other stuff.
                         }
                         break;
 
@@ -154,7 +154,6 @@ namespace RPGWeaponsTest
 
 
             }
-           
             return tmpArr;
         }
 
