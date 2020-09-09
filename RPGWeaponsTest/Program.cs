@@ -4,7 +4,13 @@
 using System;
 using System.Net.NetworkInformation;
 using System.Threading;
+using System.IO;
+using System.Linq;
+using System.Runtime.Versioning;
 
+/// <summary>
+/// A pretty basic RPG example which shows a little more of a practical applicaion of using polymorphism.
+/// </summary>
 namespace RPGWeaponsTest
 {
     class Program
@@ -13,7 +19,8 @@ namespace RPGWeaponsTest
 
         static void Main(string[] args)
         {
-            Weapon[] myArsenal = SetupWeapons();
+          //  Weapon[] myArsenal = SetupWeapons();
+            Weapon[] myArsenal = LoadWeapons();
 
 
             bool gameRunning = true;
@@ -37,6 +44,57 @@ namespace RPGWeaponsTest
             {
                 //Ask player for command and convert to lowercase.
                 string command = Ask("What would you like to do ?").ToLower();
+#region Data Driven Portion
+                //string[] validCommands = 
+                //    { "bag", "show inv", "inv", "inventory", "a", "att", "attack" };
+                //int[] thingsToDo = { 0, 0, 0, 0, 1, 1, 1 };
+
+                //int thingToDo = -1;
+                //for(int i = 0; i < validCommands.Length; i++){ 
+                //    if(command==validCommands[i])
+                //    {
+                //        thingToDo = thingsToDo[i];
+                //    }
+                //}
+                //switch (thingToDo)
+                //{
+                //    case 0:
+                //        //Show all weapons
+                //        foreach (Weapon weap in myArsenal)
+                //        {
+                //            Prompt(weap.name);
+                //            //do other stuff.
+                //        }
+                //        break;
+                //    case 1:
+                //        //Perform an attack
+                //        foreach (Weapon weap in myArsenal)
+                //        {
+                //            string attackWith = Ask($"Do you want to attack with {weap.name} ?").ToLower();
+                //            if (attackWith[0] == 'y')
+                //            {
+                //                bool didAttack = false;
+                //                foreach (Npc npc in charactersInRoom)
+                //                {
+                //                    if (!npc.friend && npc.hitpoints > 0)
+                //                    {
+                //                        didAttack = true;
+                //                        weap.Attack(npc);
+                //                        break;
+                //                    }
+                //                }
+                //                if (!didAttack)
+                //                    Prompt("There wasn't any bad guys left alive to attack.");
+                //                break;
+                //            }
+                //        }
+                //        break;
+                //    default:
+                //        break;
+                //}
+
+#endregion
+
 
                 switch (command)
                 {
@@ -44,6 +102,7 @@ namespace RPGWeaponsTest
                     case "show inv":
                     case "inv":
                     case "inventory":
+                    case "cas":
                         foreach (Weapon weap in myArsenal)
                         {
                             Prompt(weap.name);
@@ -99,6 +158,25 @@ namespace RPGWeaponsTest
             Prompt($"Thank you for playing.");
         }
 
+        //An alternative approach to loading the weapons by using File access to load in data
+        //Going to go for a very basic file structure.
+        private static Weapon[] LoadWeapons()
+        {
+            string[] strNumberOfWeapons = File.ReadAllLines(@"Resources/defaultweapons.txt") ;
+
+            //the very first line is simply the total number of weapons in the text file
+            int numberOfWeapons = int.Parse(strNumberOfWeapons[0]);
+            Weapon[] tmpArr = new Weapon[numberOfWeapons];
+            for (int i = 0; i < numberOfWeapons; i++)
+            {
+                //here we need to read in each of the chunks of text to create the weapons.
+
+
+
+            }
+            return tmpArr;
+        }
+
         //TODO: Make this load from a file, or create a version that does.
         /// <summary>
         /// A very basic hard coded weapon load out
@@ -121,6 +199,8 @@ namespace RPGWeaponsTest
                 );
             return tmpArr;
         }
+
+
         #region UtilityRegion
         //  Much bigger and I'd consider putting these into a utility class.
         /// <summary>
