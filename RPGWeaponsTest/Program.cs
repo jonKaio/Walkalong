@@ -2,6 +2,7 @@
 
 
 using System;
+using System.IO;
 using System.Net.NetworkInformation;
 using System.Threading;
 using System.IO;
@@ -19,9 +20,8 @@ namespace RPGWeaponsTest
 
         static void Main(string[] args)
         {
-          //  Weapon[] myArsenal = SetupWeapons();
-            Weapon[] myArsenal = LoadWeapons();
-
+           // Weapon[] myArsenal = SetupWeapons();
+            Weapon[] myArsenal = LoadWeapons("weapons.csv");
 
             bool gameRunning = true;
 
@@ -39,7 +39,7 @@ namespace RPGWeaponsTest
             handedNess = Ask("Welcome adventurer, are you left or right handed (answer left or right)?\nYou have 5 seconds to answer", 5).ToLower();
 
             Prompt($"So you are {handedNess} handed.");
-
+          
             while (gameRunning)
             {
                 //Ask player for command and convert to lowercase.
@@ -101,12 +101,12 @@ namespace RPGWeaponsTest
                     case "bag":
                     case "show inv":
                     case "inv":
+
                     case "inventory":
                     case "cas":
                         foreach (Weapon weap in myArsenal)
                         {
                             Prompt(weap.name);
-                            //do other stuff.
                         }
                         break;
 
@@ -155,27 +155,66 @@ namespace RPGWeaponsTest
                         break;
                 }
             }
+       
+
             Prompt($"Thank you for playing.");
         }
 
-        //An alternative approach to loading the weapons by using File access to load in data
-        //Going to go for a very basic file structure.
-        private static Weapon[] LoadWeapons()
+        private static Weapon[] LoadWeapons(string filename)
         {
-            string[] strNumberOfWeapons = File.ReadAllLines(@"Resources/defaultweapons.txt") ;
+            Weapon[] tmpArr;
 
-            //the very first line is simply the total number of weapons in the text file
-            int numberOfWeapons = int.Parse(strNumberOfWeapons[0]);
-            Weapon[] tmpArr = new Weapon[numberOfWeapons];
-            for (int i = 0; i < numberOfWeapons; i++)
+            string[] lines = File.ReadAllLines(filename);
+
+         
+
+            tmpArr = new Weapon[lines.Length -1];
+            for(int i = 1; i < lines.Length; i++)
             {
-                //here we need to read in each of the chunks of text to create the weapons.
+                string[] lineValues = lines[i].Split(',');
+                
+                if (lineValues[0] == "m")
+                {
+                    //Create a Melee weapon
+                    //weapontype,name,type,damagemod,numberofhands,defaultdamage,age
+                    Melee tmpMelee = new Melee();
+                    tmpMelee.name = lineValues[1];
+                    tmpMelee.type = lineValues[2];
+                    int.TryParse(lineValues[3], out tmpMelee.damageModifier);
+
+                    if (lineValues[4] != "")
+                        int.TryParse(lineValues[4], out tmpMelee.numberHandsRequired);
+                    if (lineValues[5] != "")
+                        int.TryParse(lineValues[5], out tmpMelee.damage);
+                    if (lineValues[6] != "")
+                        int.TryParse(lineValues[6], out tmpMelee.age);
+                    tmpArr[i - 1] = tmpMelee;
+                }
+                else
+                {
+                    //Assume it's a ranged.
+                    Ranged tmpRanged = new Ranged();
+                    tmpRanged.name = lineValues[1];
+                    tmpRanged.type = lineValues[2];
+                    int.TryParse(lineValues[3], out tmpRanged.damageModifier);
+
+                    if (lineValues[4] != "")
+                        int.TryParse(lineValues[4], out tmpRanged.numberHandsRequired);
+                    if (lineValues[5] != "")
+                        int.TryParse(lineValues[5], out tmpRanged.damage);
+                    if (lineValues[6] != "")
+                        int.TryParse(lineValues[6], out tmpRanged.age);
+                    tmpArr[i - 1] = tmpRanged;
+                }
+                
+
 
 
 
             }
             return tmpArr;
         }
+
 
         //TODO: Make this load from a file, or create a version that does.
         /// <summary>
@@ -187,7 +226,7 @@ namespace RPGWeaponsTest
             Weapon[] tmpArr = new Weapon[5];
             tmpArr[0] = new Melee();
 
-            tmpArr[1] = new Melee("Excalibur?? the confused sword", "Two Handed Sword", 5, 2);
+            tmpArr[1] = new Melee("Excalibur the confused sword", "Two Handed Sword", 5, 2);
             tmpArr[2] = new Melee("Short sword", "One Handed Sword", 2);
             tmpArr[3] = new Ranged();
 
