@@ -1,19 +1,45 @@
-﻿
+﻿//These 3 defines can switch between the different approaches.
 
+//#define COMMANDS_ORIG
+//#define COMMANDS_HARDCODED
+#define COMMANDS_DATA
+//Also now illustrating Defines and conditional directives
+
+using CsvHelper;
 
 using System;
-using System.IO;
-using System.Net.NetworkInformation;
-using System.Threading;
+using System.Globalization;
 using System.IO;
 using System.Linq;
-using System.Runtime.Versioning;
+using System.Threading;
 
 /// <summary>
 /// A pretty basic RPG example which shows a little more of a practical applicaion of using polymorphism.
 /// </summary>
 namespace RPGWeaponsTest
 {
+#if COMMANDS_DATA
+    public enum EVerbs
+    {
+        NONE,
+        INV,
+        ATTACK,
+        LOOK,
+        QUIT
+    }
+    public struct DataCommand
+    {
+        string commandVerb;
+        EVerbs myVerb;
+
+        // one of the verb aliases
+        public string CommandVerb { get => commandVerb; set => commandVerb = value; }
+
+        ////the internal verb that commandverb translates to
+        public EVerbs MyVerb { get => myVerb; set => myVerb = value; }
+    }
+#endif
+
     class Program
     {
         public static string handedNess = "right";
@@ -39,63 +65,139 @@ namespace RPGWeaponsTest
             handedNess = Ask("Welcome adventurer, are you left or right handed (answer left or right)?\nYou have 5 seconds to answer", 5).ToLower();
 
             Prompt($"So you are {handedNess} handed.");
-          
+
+
+#if COMMANDS_DATA
+            //if we are going the full CSV based data driven route to add input language support
+            //we should have an array of commands & verbs
+            DataCommand[] myCommands = LoadCommands("english.csv");
+
+
+#endif
+
             while (gameRunning)
             {
                 //Ask player for command and convert to lowercase.
                 string command = Ask("What would you like to do ?").ToLower();
-#region Data Driven Portion
-                //string[] validCommands = 
-                //    { "bag", "show inv", "inv", "inventory", "a", "att", "attack" };
-                //int[] thingsToDo = { 0, 0, 0, 0, 1, 1, 1 };
+#if COMMANDS_DATA
+                EVerbs chosenVerb =EVerbs.NONE;
+                for (int i = 0; i < myCommands.Length; i++)
+                {
+                    if (command == myCommands[i].CommandVerb)
+                    {
+                        chosenVerb = myCommands[i].MyVerb;
+                    }
+                }
 
-                //int thingToDo = -1;
-                //for(int i = 0; i < validCommands.Length; i++){ 
-                //    if(command==validCommands[i])
-                //    {
-                //        thingToDo = thingsToDo[i];
-                //    }
-                //}
-                //switch (thingToDo)
-                //{
-                //    case 0:
-                //        //Show all weapons
-                //        foreach (Weapon weap in myArsenal)
-                //        {
-                //            Prompt(weap.name);
-                //            //do other stuff.
-                //        }
-                //        break;
-                //    case 1:
-                //        //Perform an attack
-                //        foreach (Weapon weap in myArsenal)
-                //        {
-                //            string attackWith = Ask($"Do you want to attack with {weap.name} ?").ToLower();
-                //            if (attackWith[0] == 'y')
-                //            {
-                //                bool didAttack = false;
-                //                foreach (Npc npc in charactersInRoom)
-                //                {
-                //                    if (!npc.friend && npc.hitpoints > 0)
-                //                    {
-                //                        didAttack = true;
-                //                        weap.Attack(npc);
-                //                        break;
-                //                    }
-                //                }
-                //                if (!didAttack)
-                //                    Prompt("There wasn't any bad guys left alive to attack.");
-                //                break;
-                //            }
-                //        }
-                //        break;
-                //    default:
-                //        break;
-                //}
+                switch (chosenVerb)
+                {
+                    case EVerbs.INV:
+                        #region Inventory Code Block
+                        //Show all weapons
+                        foreach (Weapon weap in myArsenal)
+                            Prompt(weap.name);
+                        #endregion
+                        break;
+                    case EVerbs.ATTACK:
+                        #region Attack Code Block
+                        foreach (Weapon weap in myArsenal)
+                        {
+                            string attackWith = Ask($"Do you want to attack with {weap.name} ?").ToLower();
+                            if (attackWith[0] == 'y')
+                            {
+                                bool didAttack = false;
+                                foreach (Npc npc in charactersInRoom)
+                                {
+                                    if (!npc.friend && npc.hitpoints > 0)
+                                    {
+                                        didAttack = true;
+                                        weap.Attack(npc);
+                                        break;
+                                    }
+                                }
+                                if (!didAttack)
+                                    Prompt("There wasn't any bad guys left alive to attack.");
+                                break;
+                            }
+                        }
+                        #endregion
+                        break;
+                    case EVerbs.NONE:
+                        break;
+                    case EVerbs.LOOK:
+                        #region Look Code Block
+                        Prompt("You are in a room.");
+                        if (charactersInRoom.Length > 0)
+                        {
+                            foreach (Npc npc in charactersInRoom)
+                            {
+                                Prompt($"You can see that '{npc.name}' is in here with you, and they have {npc.hitpoints} health.");
+                            }
+                        }
+                        #endregion
+                        break;
+                    case EVerbs.QUIT:
+                        gameRunning = false;
+                        break;
+                    default:
+                        break;
+                }
 
-#endregion
 
+#endif
 
+#if COMMANDS_HARDCODED
+                string[] validCommands = 
+                    { "bag", "show inv", "inv", "inventory", "a", "att", "attack" };
+                int[] thingsToDo = { 0, 0, 0, 0, 1, 1, 1 };
+
+                int thingToDo = -1;
+                for(int i = 0; i < validCommands.Length; i++){ 
+                    if(command==validCommands[i])
+                    {
+                        thingToDo = thingsToDo[i];
+                    }
+                }
+                switch (thingToDo)
+                {
+                    case 0:
+                        //Show all weapons
+                        foreach (Weapon weap in myArsenal)
+                        {
+                            Prompt(weap.name);
+                            //do other stuff.
+                        }
+                        break;
+                    case 1:
+                        //Perform an attack
+                        foreach (Weapon weap in myArsenal)
+                        {
+                            string attackWith = Ask($"Do you want to attack with {weap.name} ?").ToLower();
+                            if (attackWith[0] == 'y')
+                            {
+                                bool didAttack = false;
+                                foreach (Npc npc in charactersInRoom)
+                                {
+                                    if (!npc.friend && npc.hitpoints > 0)
+                                    {
+                                        didAttack = true;
+                                        weap.Attack(npc);
+                                        break;
+                                    }
+                                }
+                                if (!didAttack)
+                                    Prompt("There wasn't any bad guys left alive to attack.");
+                                break;
+                            }
+                        }
+                        break;
+                    default:
+                        break;
+                }
+
+#endif
+
+#if COMMANDS_ORIG
                 switch (command)
                 {
                     case "bag":
@@ -154,17 +256,24 @@ namespace RPGWeaponsTest
                     default:
                         break;
                 }
+#endif
             }
-       
+
 
             Prompt($"Thank you for playing.");
         }
 
-        private static Weapon[] LoadWeapons(string filename)
+
+        /// <summary>
+        /// Loads in an inventory of weapons from a given file
+        /// </summary>
+        /// <param name="_filename"></param>
+        /// <returns></returns>
+        private static Weapon[] LoadWeapons(string _filename)
         {
             Weapon[] tmpArr;
 
-            string[] lines = File.ReadAllLines(filename);
+            string[] lines = File.ReadAllLines(_filename);
 
          
 
@@ -216,7 +325,6 @@ namespace RPGWeaponsTest
         }
 
 
-        //TODO: Make this load from a file, or create a version that does.
         /// <summary>
         /// A very basic hard coded weapon load out
         /// </summary>
@@ -240,7 +348,30 @@ namespace RPGWeaponsTest
         }
 
 
-        #region UtilityRegion
+        /// <summary>
+        /// Loads a command list in the form of Datacommand
+        /// to allow multiple input languages.
+        /// </summary>
+        /// <param name="_filename">path to file</param>
+        /// <returns>an array of DataCommand objects</returns>
+        private static DataCommand[] LoadCommands(string _filename) {
+            DataCommand[] tmpArray;
+            System.Collections.Generic.IEnumerable<DataCommand> tmp;
+            using (var reader = new StreamReader(_filename))
+            using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
+            {
+              tmp = csv.GetRecords<DataCommand>();
+            tmpArray = tmp.ToArray<DataCommand>();
+            }
+
+          
+            return tmpArray;
+        }
+
+
+
+
+#region UtilityRegion
         //  Much bigger and I'd consider putting these into a utility class.
         /// <summary>
         /// Display a simple text prompt

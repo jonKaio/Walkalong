@@ -1,0 +1,8 @@
+﻿CommandVerb,MyVerb
+inv,1
+inventory,1
+attack,2
+att,2
+look,3
+quit,4
+
