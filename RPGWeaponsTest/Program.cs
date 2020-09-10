@@ -203,7 +203,6 @@ namespace RPGWeaponsTest
                     case "bag":
                     case "show inv":
                     case "inv":
-
                     case "inventory":
                     case "cas":
                         foreach (Weapon weap in myArsenal)

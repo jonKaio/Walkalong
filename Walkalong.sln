@@ -28,6 +28,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RPGWeaponsTest", "RPGWeapon
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Loops_And_Switches", "Loops_And_Switches\Loops_And_Switches.csproj", "{57AEE473-212B-4407-9132-91F8EA55E5AF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NugetDemoAndCSV", "NugetDemoAndCSV\NugetDemoAndCSV.csproj", "{E81FFF9B-FF15-4855-8C57-9FB168E6E5CE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -116,6 +118,14 @@ Global
 		{57AEE473-212B-4407-9132-91F8EA55E5AF}.Release|Any CPU.Build.0 = Release|Any CPU
 		{57AEE473-212B-4407-9132-91F8EA55E5AF}.Release|x86.ActiveCfg = Release|Any CPU
 		{57AEE473-212B-4407-9132-91F8EA55E5AF}.Release|x86.Build.0 = Release|Any CPU
+		{E81FFF9B-FF15-4855-8C57-9FB168E6E5CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E81FFF9B-FF15-4855-8C57-9FB168E6E5CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E81FFF9B-FF15-4855-8C57-9FB168E6E5CE}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{E81FFF9B-FF15-4855-8C57-9FB168E6E5CE}.Debug|x86.Build.0 = Debug|Any CPU
+		{E81FFF9B-FF15-4855-8C57-9FB168E6E5CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E81FFF9B-FF15-4855-8C57-9FB168E6E5CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E81FFF9B-FF15-4855-8C57-9FB168E6E5CE}.Release|x86.ActiveCfg = Release|Any CPU
+		{E81FFF9B-FF15-4855-8C57-9FB168E6E5CE}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
