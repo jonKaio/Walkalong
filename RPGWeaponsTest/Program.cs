@@ -12,6 +12,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Threading;
+using System.Collections.Generic;
 
 /// <summary>
 /// A pretty basic RPG example which shows a little more of a practical applicaion of using polymorphism.
@@ -355,12 +356,12 @@ namespace RPGWeaponsTest
         /// <returns>an array of DataCommand objects</returns>
         private static DataCommand[] LoadCommands(string _filename) {
             DataCommand[] tmpArray;
-            System.Collections.Generic.IEnumerable<DataCommand> tmp;
+            IEnumerable<DataCommand> tmp;
             using (var reader = new StreamReader(_filename))
             using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
             {
               tmp = csv.GetRecords<DataCommand>();
-            tmpArray = tmp.ToArray<DataCommand>();
+              tmpArray = tmp.ToArray<DataCommand>();
             }
 
           

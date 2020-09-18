@@ -10,9 +10,9 @@ namespace TryCatch
 
         static void Main(string[] args)
         {
-            Console.WriteLine("Testing Try & Catch");
+            //Console.WriteLine("Testing Try & Catch");
 
-            Console.WriteLine("Please input a number, no text definately no text ?");
+            //Console.WriteLine("Please input a number, no text definately no text ?");
             //string tmp = Console.ReadLine();
             //int a=-1;
             //try
@@ -29,20 +29,24 @@ namespace TryCatch
 
             //Console.Write($"You entered the number {a.ToString()}");
 
-            //try
-            //{
-            //    using (var file = File.OpenText("MyImaginaryFile"))
-            //    {
-            //        string tmp2 = file.ReadLine();
-            //    }
-            //}
-            //catch (Exception)
-            //{
-            //    Console.WriteLine("File does not exist");
+            try
+            {
+                using (StreamReader file = File.OpenText("ARealFile.txt"))
+                {
+                    for (int i = 0; !file.EndOfStream; i++)
+                    {
+                        string tmp2 = file.ReadLine();
+                        Console.WriteLine($"Line {i} of textfile says {tmp2}");
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("File does not exist");
 
-            //}
+            }
 
-            //return;
+            return;
 
             try
             {

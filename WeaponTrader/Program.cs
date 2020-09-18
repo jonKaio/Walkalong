@@ -6,6 +6,10 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
+            string test = "abcd";
+            test = test.Replace("abc", "");
+            test = test.Trim();
+
 
             Console.WriteLine("Pick an item to trade (w1-10 or f1-5 or p1-6 for weapons,food or postions ?");
             string tmpStr = Console.ReadLine();
